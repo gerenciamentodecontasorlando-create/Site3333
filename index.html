@@ -1,132 +1,303 @@
 <!DOCTYPE html>
 <html lang="pt-BR">
 <head>
-<meta charset="UTF-8">
-<title>BTX Tech – Portfólio</title>
-<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<meta charset="UTF-8" />
+<title>BTX Tech — Tecnologia, Saúde e Inovação</title>
+<meta name="viewport" content="width=device-width, initial-scale=1.0"/>
 
 <style>
-  body{
-    margin:0;
-    font-family: Arial, Helvetica, sans-serif;
-    background:#0b0f14;
-    color:#eaeaea;
-  }
-  .container{
-    max-width:900px;
-    margin:auto;
-    padding:40px 20px 60px;
-  }
-  .card{
-    background:rgba(255,255,255,0.03);
-    border:1px solid rgba(255,255,255,0.1);
-    border-radius:18px;
-    padding:30px 24px;
-    box-shadow:0 30px 80px rgba(0,0,0,0.6);
-  }
+:root{
+  --bg:#0b0f14;
+  --panel:#0f1620;
+  --line:rgba(255,255,255,.10);
+  --txt:#eaeaea;
+  --muted:#9aa4b2;
+  --accent:#19c37d;
+  --accent2:#0fe39a;
+  --glow:0 0 22px rgba(25,195,125,.35);
+}
+*{box-sizing:border-box}
+body{
+  margin:0;
+  font-family:-apple-system,BlinkMacSystemFont,"Segoe UI",Roboto,Arial,sans-serif;
+  color:var(--txt);
+  background:
+    radial-gradient(900px 500px at 15% 10%, rgba(25,195,125,.18), transparent 60%),
+    radial-gradient(700px 400px at 85% 20%, rgba(15,227,154,.12), transparent 60%),
+    var(--bg);
+}
+.app{
+  max-width:1200px;
+  margin:auto;
+  padding:28px 20px 40px;
+  display:grid;
+  grid-template-columns:280px 1fr;
+  gap:24px;
+}
+@media(max-width:900px){
+  .app{grid-template-columns:1fr}
+}
 
-  /* LOGO FAKE (TEXTO) */
-  .logo-box{
-    width:220px;
-    height:80px;
-    border-radius:14px;
-    background:linear-gradient(135deg,#19c37d,#0f8f5a);
-    color:#04130c;
-    font-weight:900;
-    font-size:28px;
-    display:flex;
-    align-items:center;
-    justify-content:center;
-    letter-spacing:1px;
-    margin-bottom:25px;
-  }
+/* LATERAL */
+.sidebar{
+  background:linear-gradient(180deg,#0c121a,#0b1017);
+  border:1px solid var(--line);
+  border-radius:20px;
+  padding:18px;
+  box-shadow:0 30px 80px rgba(0,0,0,.55);
+}
+.brand{
+  display:flex;
+  align-items:center;
+  gap:10px;
+  margin-bottom:14px;
+}
+.brand .chip{
+  width:42px;height:42px;border-radius:12px;
+  background:linear-gradient(135deg,var(--accent),var(--accent2));
+  box-shadow:var(--glow);
+  display:flex;align-items:center;justify-content:center;
+  color:#03140c;font-weight:900;letter-spacing:.5px;
+}
+.brand h2{margin:0;font-size:18px}
+.brand span{color:var(--muted);font-size:12px}
 
-  h1{
-    color:#19c37d;
-    margin:0 0 10px;
-    font-size:30px;
-  }
-  p{
-    font-size:15px;
-    line-height:1.6;
-    color:rgba(234,234,234,0.85);
-  }
-  .section{
-    margin-top:28px;
-  }
-  .section h2{
-    color:#19c37d;
-    font-size:16px;
-    margin-bottom:10px;
-  }
-  ul{
-    padding-left:18px;
-  }
-  li{
-    margin-bottom:8px;
-    font-size:14px;
-  }
-  .founder{
-    margin-top:30px;
-  }
-  .contact{
-    margin-top:20px;
-    font-size:14px;
-    display:grid;
-    gap:6px;
-  }
-  .contact strong{
-    color:#19c37d;
-  }
-  .footer{
-    margin-top:30px;
-    text-align:center;
-    font-size:11px;
-    color:rgba(234,234,234,0.5);
-  }
+.nav{
+  margin-top:18px;
+  display:grid;
+  gap:10px;
+}
+.btn{
+  border:1px solid rgba(25,195,125,.35);
+  background:linear-gradient(180deg, rgba(25,195,125,.18), rgba(25,195,125,.06));
+  color:var(--txt);
+  border-radius:14px;
+  padding:12px 14px;
+  cursor:default;
+  box-shadow:var(--glow);
+}
+.btn small{display:block;color:var(--muted);font-size:12px}
+.btn strong{display:block;font-size:14px;color:var(--accent2)}
+
+.footer-side{
+  margin-top:18px;
+  padding-top:12px;
+  border-top:1px solid var(--line);
+  font-size:12px;color:var(--muted);
+}
+
+/* CONTEÚDO */
+.content{
+  background:linear-gradient(180deg,#0f1620,#0b1017);
+  border:1px solid var(--line);
+  border-radius:22px;
+  padding:28px 28px 34px;
+  box-shadow:0 40px 100px rgba(0,0,0,.6);
+}
+.hero{
+  display:grid;
+  grid-template-columns:1.1fr .9fr;
+  gap:28px;
+  align-items:center;
+}
+@media(max-width:900px){
+  .hero{grid-template-columns:1fr}
+}
+.badge{
+  display:inline-block;
+  padding:8px 14px;
+  border-radius:999px;
+  background:linear-gradient(135deg,var(--accent),var(--accent2));
+  color:#04130c;
+  font-weight:800;
+  letter-spacing:.4px;
+  box-shadow:var(--glow);
+  margin-bottom:14px;
+}
+h1{
+  margin:0 0 12px;
+  font-size:38px;line-height:1.1;
+}
+.subtitle{
+  color:var(--muted);
+  font-size:17px;line-height:1.5;
+  max-width:720px;
+}
+.card{
+  background:rgba(255,255,255,.03);
+  border:1px solid var(--line);
+  border-radius:18px;
+  padding:18px;
+}
+.section{
+  margin-top:38px;
+}
+.section h3{
+  margin:0 0 14px;
+  font-size:22px;
+}
+.grid{
+  display:grid;
+  grid-template-columns:repeat(auto-fit,minmax(240px,1fr));
+  gap:16px;
+}
+.tile{
+  background:#0d141d;
+  border:1px solid var(--line);
+  border-radius:16px;
+  padding:16px;
+}
+.tile h4{margin:0 0 8px;color:var(--accent2)}
+.tile p{margin:0;color:var(--muted);font-size:14px;line-height:1.45}
+
+.about{
+  display:grid;
+  grid-template-columns:1.2fr .8fr;
+  gap:20px;
+}
+@media(max-width:900px){
+  .about{grid-template-columns:1fr}
+}
+.list{
+  list-style:none;padding:0;margin:0;display:grid;gap:8px;
+}
+.list li{
+  padding:10px 12px;
+  border-radius:12px;
+  background:rgba(255,255,255,.03);
+  border:1px solid var(--line);
+  font-size:14px;
+}
+.contact{
+  margin-top:24px;
+  padding-top:16px;
+  border-top:1px solid var(--line);
+  display:grid;gap:6px;font-size:14px;
+}
+.contact strong{color:var(--accent2)}
+.note{margin-top:14px;color:#7d8794;font-size:12px}
 </style>
 </head>
 
 <body>
-<div class="container">
-  <div class="card">
+<div class="app">
 
-    <!-- LOGO SIMPLES (SEM IMAGEM) -->
-    <div class="logo-box">BTX</div>
-
-    <h1>BTX Tech – Belém</h1>
-
-    <p>
-      Portfólio institucional simples para apresentação de soluções desenvolvidas
-      na área de tecnologia aplicada à saúde, com foco em organização clínica,
-      automação de processos e ferramentas digitais práticas.
-    </p>
-
-    <div class="section">
-      <h2>O que foi desenvolvido</h2>
-      <ul>
-        <li>Agenda clínica offline-first</li>
-        <li>Gerador de documentos clínicos (receituário, atestado, laudo, orçamento)</li>
-        <li>Padronização visual de impressos profissionais</li>
-        <li>Ferramentas digitais para organização e apresentação</li>
-      </ul>
+  <!-- LATERAL / PROJETOS -->
+  <aside class="sidebar">
+    <div class="brand">
+      <div class="chip">BTX</div>
+      <div>
+        <h2>BTX Tech</h2>
+        <span>Belém • Tecnologia & Saúde</span>
+      </div>
     </div>
 
-    <div class="founder">
-      <p><strong>Fundador:</strong> Orlando Abreu Gomes da Silva</p>
+    <div class="nav">
+      <div class="btn">
+        <strong>Agenda Clínica Inteligente</strong>
+        <small>Offline-first • alta confiabilidade</small>
+      </div>
+      <div class="btn">
+        <strong>Gerador de Documentos</strong>
+        <small>Receitas • laudos • atestados</small>
+      </div>
+      <div class="btn">
+        <strong>Padronização Profissional</strong>
+        <small>Layouts premium e consistentes</small>
+      </div>
+      <div class="btn">
+        <strong>Soluções Sob Medida</strong>
+        <small>Realidade local • impacto prático</small>
+      </div>
     </div>
+
+    <div class="footer-side">
+      One-page institucional<br>
+      HTML único • sem imagens
+    </div>
+  </aside>
+
+  <!-- CONTEÚDO PRINCIPAL -->
+  <main class="content">
+
+    <section class="hero">
+      <div>
+        <div class="badge">INOVAÇÃO REGIONAL</div>
+        <h1>Tecnologia aplicada à saúde<br>para acelerar o desenvolvimento local</h1>
+        <p class="subtitle">
+          O desenvolvimento tecnológico na nossa região ainda é limitado, especialmente
+          quando comparado a grandes centros. A BTX nasce para reduzir essa distância,
+          estimulando soluções reais, acessíveis e profissionais — com foco em saúde,
+          gestão clínica e impacto prático.
+        </p>
+      </div>
+
+      <div class="card">
+        <p>
+          A BTX surge com o objetivo de **estimular crescimento**, **organizar processos**
+          e **elevar o padrão tecnológico**, conectando conhecimento técnico,
+          vivência clínica e engenharia de software.
+        </p>
+      </div>
+    </section>
+
+    <section class="section">
+      <h3>Quem está por trás</h3>
+      <div class="about">
+        <div>
+          <p>
+            <strong>Orlando Abreu Gomes da Silva</strong> é cirurgião-dentista,
+            especialista em cirurgia e traumatologia bucomaxilofacial, analista de sistemas
+            e estudante de Medicina (7º semestre).
+          </p>
+          <p class="subtitle">
+            A combinação entre clínica, tecnologia e engenharia orienta o desenvolvimento
+            de soluções robustas, simples de usar e alinhadas à realidade do dia a dia
+            dos profissionais de saúde.
+          </p>
+        </div>
+        <ul class="list">
+          <li>Cirurgião-dentista</li>
+          <li>Especialista em cirurgia e traumatologia bucomaxilofacial</li>
+          <li>Estudante de Medicina — 7º semestre</li>
+          <li>Analista de Sistemas</li>
+          <li>Foco em soluções clínicas e digitais integradas</li>
+        </ul>
+      </div>
+    </section>
+
+    <section class="section">
+      <h3>Áreas de atuação</h3>
+      <div class="grid">
+        <div class="tile">
+          <h4>Gestão Clínica</h4>
+          <p>Agendas, fluxos de atendimento e organização diária confiável.</p>
+        </div>
+        <div class="tile">
+          <h4>Documentação Profissional</h4>
+          <p>Geração rápida de documentos com padrão visual e dados automáticos.</p>
+        </div>
+        <div class="tile">
+          <h4>Offline & Estabilidade</h4>
+          <p>Sistemas pensados para funcionar mesmo sem internet.</p>
+        </div>
+        <div class="tile">
+          <h4>Inovação Local</h4>
+          <p>Soluções tecnológicas alinhadas à realidade regional.</p>
+        </div>
+      </div>
+    </section>
 
     <div class="contact">
       <div><strong>Telefone:</strong> (91) 99987-3835</div>
-      <div><strong>Instagram:</strong> @orlandoabreu</div>
       <div><strong>E-mail:</strong> btxtecbaixotocantins@gmail.com</div>
     </div>
 
-    <div class="footer">
-      Portfólio simples • HTML único • Sem imagens • Só apresentação
+    <div class="note">
+      Documento institucional • apresentação comercial • HTML único
     </div>
 
-  </div>
+  </main>
 </div>
 </body>
 </html>
