@@ -2,7 +2,7 @@
 <html lang="pt-BR">
 <head>
 <meta charset="UTF-8">
-<title>BTX Tech — Portfólio</title>
+<title>BTX Tech – Portfólio</title>
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
 <style>
@@ -24,11 +24,23 @@
     padding:30px 24px;
     box-shadow:0 30px 80px rgba(0,0,0,0.6);
   }
-  .logo{
-    width:180px;
-    display:block;
+
+  /* LOGO FAKE (TEXTO) */
+  .logo-box{
+    width:220px;
+    height:80px;
+    border-radius:14px;
+    background:linear-gradient(135deg,#19c37d,#0f8f5a);
+    color:#04130c;
+    font-weight:900;
+    font-size:28px;
+    display:flex;
+    align-items:center;
+    justify-content:center;
+    letter-spacing:1px;
     margin-bottom:25px;
   }
+
   h1{
     color:#19c37d;
     margin:0 0 10px;
@@ -36,7 +48,7 @@
   }
   p{
     font-size:15px;
-    line-height:1.5;
+    line-height:1.6;
     color:rgba(234,234,234,0.85);
   }
   .section{
@@ -47,30 +59,15 @@
     font-size:16px;
     margin-bottom:10px;
   }
-  .list{
-    list-style:none;
-    padding:0;
-    margin:0;
-    display:grid;
-    gap:10px;
+  ul{
+    padding-left:18px;
   }
-  .item{
-    padding:12px 14px;
-    border-radius:14px;
-    background:rgba(255,255,255,0.04);
-    border:1px solid rgba(255,255,255,0.08);
+  li{
+    margin-bottom:8px;
     font-size:14px;
   }
   .founder{
     margin-top:30px;
-    text-align:center;
-  }
-  .founder img{
-    width:240px;
-    border-radius:16px;
-    border:3px solid #19c37d;
-    box-shadow:0 20px 50px rgba(0,0,0,0.6);
-    margin-bottom:12px;
   }
   .contact{
     margin-top:20px;
@@ -82,7 +79,7 @@
     color:#19c37d;
   }
   .footer{
-    margin-top:25px;
+    margin-top:30px;
     text-align:center;
     font-size:11px;
     color:rgba(234,234,234,0.5);
@@ -94,32 +91,28 @@
 <div class="container">
   <div class="card">
 
-    <!-- LOGOMARCA -->
-    <img class="logo" alt="BTX Tech Logo"
-      src="data:image/jpeg;base64,<!-- BASE64 DA LOGOMARCA INSERIDA AQUI PELO SISTEMA -->">
+    <!-- LOGO SIMPLES (SEM IMAGEM) -->
+    <div class="logo-box">BTX</div>
 
     <h1>BTX Tech – Belém</h1>
 
     <p>
-      Portfólio institucional simples para apresentação do trabalho desenvolvido
-      na área de tecnologia aplicada à saúde, com foco em soluções práticas,
-      organização clínica, automação de processos e padronização profissional.
+      Portfólio institucional simples para apresentação de soluções desenvolvidas
+      na área de tecnologia aplicada à saúde, com foco em organização clínica,
+      automação de processos e ferramentas digitais práticas.
     </p>
 
     <div class="section">
       <h2>O que foi desenvolvido</h2>
-      <ul class="list">
-        <li class="item">Agenda clínica offline-first (PWA), focada em confiabilidade e uso diário</li>
-        <li class="item">Gerador de documentos clínicos: receituário, atestado, laudo e orçamento</li>
-        <li class="item">Padronização visual premium de impressos clínicos</li>
-        <li class="item">Ferramentas digitais simples para apresentação e organização profissional</li>
+      <ul>
+        <li>Agenda clínica offline-first</li>
+        <li>Gerador de documentos clínicos (receituário, atestado, laudo, orçamento)</li>
+        <li>Padronização visual de impressos profissionais</li>
+        <li>Ferramentas digitais para organização e apresentação</li>
       </ul>
     </div>
 
-    <!-- FUNDADOR -->
     <div class="founder">
-      <img alt="Fundador BTX Tech"
-        src="data:image/jpeg;base64,<!-- BASE64 DA FOTO DO FUNDADOR INSERIDA AQUI PELO SISTEMA -->">
       <p><strong>Fundador:</strong> Orlando Abreu Gomes da Silva</p>
     </div>
 
@@ -130,7 +123,7 @@
     </div>
 
     <div class="footer">
-      Arquivo único HTML • Sem dependências • Apenas apresentação
+      Portfólio simples • HTML único • Sem imagens • Só apresentação
     </div>
 
   </div>
