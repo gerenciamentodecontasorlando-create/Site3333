@@ -1,303 +1,589 @@
-<!DOCTYPE html>
+
+<!doctype html>
 <html lang="pt-BR">
 <head>
-<meta charset="UTF-8" />
-<title>BTX Tech — Tecnologia, Saúde e Inovação</title>
-<meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width,initial-scale=1" />
+  <meta name="theme-color" content="#0b1214" />
+  <title>BTX Tech — Belém</title>
+  <meta name="description" content="BTX Tech — soluções em tecnologia aplicada à saúde. Organização clínica, automação de processos e ferramentas digitais práticas." />
 
-<style>
-:root{
-  --bg:#0b0f14;
-  --panel:#0f1620;
-  --line:rgba(255,255,255,.10);
-  --txt:#eaeaea;
-  --muted:#9aa4b2;
-  --accent:#19c37d;
-  --accent2:#0fe39a;
-  --glow:0 0 22px rgba(25,195,125,.35);
-}
-*{box-sizing:border-box}
-body{
-  margin:0;
-  font-family:-apple-system,BlinkMacSystemFont,"Segoe UI",Roboto,Arial,sans-serif;
-  color:var(--txt);
-  background:
-    radial-gradient(900px 500px at 15% 10%, rgba(25,195,125,.18), transparent 60%),
-    radial-gradient(700px 400px at 85% 20%, rgba(15,227,154,.12), transparent 60%),
-    var(--bg);
-}
-.app{
-  max-width:1200px;
-  margin:auto;
-  padding:28px 20px 40px;
-  display:grid;
-  grid-template-columns:280px 1fr;
-  gap:24px;
-}
-@media(max-width:900px){
-  .app{grid-template-columns:1fr}
-}
+  <style>
+    :root{
+      --bg0:#060a0c;
+      --bg1:#0b1214;
+      --card:#0f1a1d;
+      --card2:#0c1619;
+      --stroke:rgba(255,255,255,.10);
+      --stroke2:rgba(13, 255, 161, .22);
+      --text:#eaf2f3;
+      --muted:rgba(234,242,243,.72);
+      --muted2:rgba(234,242,243,.55);
+      --green:#0dffa1;
+      --green2:#00d38b;
+      --shadow:0 18px 60px rgba(0,0,0,.55);
+      --shadow2:0 10px 26px rgba(0,0,0,.45);
+      --radius:22px;
+      --radius2:16px;
+      --mono: ui-monospace, SFMono-Regular, Menlo, Monaco, Consolas, "Liberation Mono", "Courier New", monospace;
+      --sans: ui-sans-serif, system-ui, -apple-system, Segoe UI, Roboto, Helvetica, Arial, "Apple Color Emoji","Segoe UI Emoji";
+    }
 
-/* LATERAL */
-.sidebar{
-  background:linear-gradient(180deg,#0c121a,#0b1017);
-  border:1px solid var(--line);
-  border-radius:20px;
-  padding:18px;
-  box-shadow:0 30px 80px rgba(0,0,0,.55);
-}
-.brand{
-  display:flex;
-  align-items:center;
-  gap:10px;
-  margin-bottom:14px;
-}
-.brand .chip{
-  width:42px;height:42px;border-radius:12px;
-  background:linear-gradient(135deg,var(--accent),var(--accent2));
-  box-shadow:var(--glow);
-  display:flex;align-items:center;justify-content:center;
-  color:#03140c;font-weight:900;letter-spacing:.5px;
-}
-.brand h2{margin:0;font-size:18px}
-.brand span{color:var(--muted);font-size:12px}
+    *{box-sizing:border-box}
+    html,body{height:100%}
+    body{
+      margin:0;
+      font-family:var(--sans);
+      color:var(--text);
+      background:
+        radial-gradient(1100px 700px at 12% 10%, rgba(13,255,161,.12), transparent 60%),
+        radial-gradient(900px 600px at 88% 18%, rgba(13,255,161,.08), transparent 55%),
+        radial-gradient(1200px 900px at 50% 105%, rgba(0,211,139,.10), transparent 55%),
+        linear-gradient(180deg, var(--bg0), var(--bg1));
+      overflow-x:hidden;
+    }
 
-.nav{
-  margin-top:18px;
-  display:grid;
-  gap:10px;
-}
-.btn{
-  border:1px solid rgba(25,195,125,.35);
-  background:linear-gradient(180deg, rgba(25,195,125,.18), rgba(25,195,125,.06));
-  color:var(--txt);
-  border-radius:14px;
-  padding:12px 14px;
-  cursor:default;
-  box-shadow:var(--glow);
-}
-.btn small{display:block;color:var(--muted);font-size:12px}
-.btn strong{display:block;font-size:14px;color:var(--accent2)}
+    /* “circuit board” grid */
+    .gridfx{
+      position:fixed; inset:0;
+      pointer-events:none;
+      opacity:.22;
+      background:
+        linear-gradient(rgba(255,255,255,.05) 1px, transparent 1px) 0 0 / 28px 28px,
+        linear-gradient(90deg, rgba(255,255,255,.05) 1px, transparent 1px) 0 0 / 28px 28px;
+      mask-image: radial-gradient(900px 520px at 50% 20%, rgba(0,0,0,.9), transparent 65%);
+      filter: blur(.2px);
+    }
 
-.footer-side{
-  margin-top:18px;
-  padding-top:12px;
-  border-top:1px solid var(--line);
-  font-size:12px;color:var(--muted);
-}
+    /* subtle animated glow */
+    .glow{
+      position:fixed; inset:-40px;
+      pointer-events:none;
+      background:
+        radial-gradient(600px 380px at 15% 25%, rgba(13,255,161,.18), transparent 70%),
+        radial-gradient(500px 340px at 85% 35%, rgba(13,255,161,.12), transparent 72%),
+        radial-gradient(700px 420px at 50% 110%, rgba(0,211,139,.14), transparent 72%);
+      animation: floatGlow 8s ease-in-out infinite;
+      opacity:.75;
+      filter: saturate(1.1);
+    }
+    @keyframes floatGlow{
+      0%,100%{transform:translate3d(0,0,0)}
+      50%{transform:translate3d(0,-10px,0)}
+    }
 
-/* CONTEÚDO */
-.content{
-  background:linear-gradient(180deg,#0f1620,#0b1017);
-  border:1px solid var(--line);
-  border-radius:22px;
-  padding:28px 28px 34px;
-  box-shadow:0 40px 100px rgba(0,0,0,.6);
-}
-.hero{
-  display:grid;
-  grid-template-columns:1.1fr .9fr;
-  gap:28px;
-  align-items:center;
-}
-@media(max-width:900px){
-  .hero{grid-template-columns:1fr}
-}
-.badge{
-  display:inline-block;
-  padding:8px 14px;
-  border-radius:999px;
-  background:linear-gradient(135deg,var(--accent),var(--accent2));
-  color:#04130c;
-  font-weight:800;
-  letter-spacing:.4px;
-  box-shadow:var(--glow);
-  margin-bottom:14px;
-}
-h1{
-  margin:0 0 12px;
-  font-size:38px;line-height:1.1;
-}
-.subtitle{
-  color:var(--muted);
-  font-size:17px;line-height:1.5;
-  max-width:720px;
-}
-.card{
-  background:rgba(255,255,255,.03);
-  border:1px solid var(--line);
-  border-radius:18px;
-  padding:18px;
-}
-.section{
-  margin-top:38px;
-}
-.section h3{
-  margin:0 0 14px;
-  font-size:22px;
-}
-.grid{
-  display:grid;
-  grid-template-columns:repeat(auto-fit,minmax(240px,1fr));
-  gap:16px;
-}
-.tile{
-  background:#0d141d;
-  border:1px solid var(--line);
-  border-radius:16px;
-  padding:16px;
-}
-.tile h4{margin:0 0 8px;color:var(--accent2)}
-.tile p{margin:0;color:var(--muted);font-size:14px;line-height:1.45}
+    .wrap{
+      width:min(1200px, calc(100% - 32px));
+      margin:22px auto 60px;
+      position:relative;
+      z-index:2;
+    }
 
-.about{
-  display:grid;
-  grid-template-columns:1.2fr .8fr;
-  gap:20px;
-}
-@media(max-width:900px){
-  .about{grid-template-columns:1fr}
-}
-.list{
-  list-style:none;padding:0;margin:0;display:grid;gap:8px;
-}
-.list li{
-  padding:10px 12px;
-  border-radius:12px;
-  background:rgba(255,255,255,.03);
-  border:1px solid var(--line);
-  font-size:14px;
-}
-.contact{
-  margin-top:24px;
-  padding-top:16px;
-  border-top:1px solid var(--line);
-  display:grid;gap:6px;font-size:14px;
-}
-.contact strong{color:var(--accent2)}
-.note{margin-top:14px;color:#7d8794;font-size:12px}
-</style>
+    .hero{
+      border:1px solid var(--stroke);
+      background:
+        radial-gradient(900px 520px at 20% 0%, rgba(13,255,161,.12), transparent 60%),
+        linear-gradient(180deg, rgba(255,255,255,.04), rgba(255,255,255,.02));
+      border-radius: calc(var(--radius) + 6px);
+      box-shadow: var(--shadow);
+      overflow:hidden;
+      position:relative;
+    }
+
+    /* top header strip */
+    .topbar{
+      display:flex;
+      align-items:center;
+      justify-content:space-between;
+      gap:16px;
+      padding:18px 20px;
+      border-bottom:1px solid rgba(255,255,255,.08);
+      background: linear-gradient(180deg, rgba(0,0,0,.14), rgba(0,0,0,0));
+    }
+
+    .brand{
+      display:flex; align-items:center; gap:12px;
+      min-width: 240px;
+    }
+
+    .logo{
+      width:54px; height:54px;
+      border-radius:14px;
+      background:
+        radial-gradient(16px 16px at 30% 28%, rgba(255,255,255,.30), transparent 55%),
+        linear-gradient(135deg, rgba(13,255,161,.95), rgba(0,211,139,.55));
+      box-shadow: 0 12px 30px rgba(13,255,161,.14);
+      border:1px solid rgba(0,0,0,.25);
+      position:relative;
+      overflow:hidden;
+    }
+    .logo:after{
+      content:"";
+      position:absolute; inset:-40%;
+      background: linear-gradient(90deg, transparent, rgba(255,255,255,.26), transparent);
+      transform: rotate(25deg) translateX(-40%);
+      animation: sweep 3.5s ease-in-out infinite;
+      opacity:.85;
+    }
+    @keyframes sweep{
+      0%{transform: rotate(25deg) translateX(-55%)}
+      55%{transform: rotate(25deg) translateX(55%)}
+      100%{transform: rotate(25deg) translateX(55%)}
+    }
+
+    .brand h1{
+      margin:0;
+      font-size:18px;
+      letter-spacing:.3px;
+      line-height:1.1;
+    }
+    .brand .sub{
+      display:block;
+      margin-top:4px;
+      color:var(--muted);
+      font-size:12.5px;
+    }
+
+    .contactRow{
+      display:flex;
+      flex-wrap:wrap;
+      gap:10px;
+      justify-content:flex-end;
+    }
+
+    .pill{
+      display:inline-flex;
+      align-items:center;
+      gap:10px;
+      padding:10px 12px;
+      border-radius:999px;
+      border:1px solid rgba(13,255,161,.22);
+      background: rgba(12,22,25,.55);
+      box-shadow: var(--shadow2);
+      text-decoration:none;
+      color:var(--text);
+      transition: transform .15s ease, border-color .15s ease, background .15s ease;
+      white-space:nowrap;
+      max-width: 100%;
+    }
+    .pill:hover{
+      transform: translateY(-1px);
+      border-color: rgba(13,255,161,.40);
+      background: rgba(12,22,25,.72);
+    }
+    .pill small{
+      display:block;
+      color:var(--muted2);
+      font-size:11px;
+      line-height:1.15;
+      letter-spacing:.2px;
+    }
+    .pill strong{
+      display:block;
+      font-size:12.8px;
+      font-weight:700;
+      line-height:1.2;
+      letter-spacing:.2px;
+    }
+    .ico{
+      width:34px; height:34px;
+      border-radius:12px;
+      display:grid; place-items:center;
+      border:1px solid rgba(255,255,255,.08);
+      background:
+        radial-gradient(12px 12px at 30% 25%, rgba(255,255,255,.16), transparent 60%),
+        linear-gradient(180deg, rgba(13,255,161,.18), rgba(0,0,0,0));
+      flex:0 0 auto;
+      font-family: var(--mono);
+      font-size: 13px;
+      color: rgba(234,242,243,.92);
+    }
+
+    .content{
+      padding:22px 20px 22px;
+    }
+
+    .layout{
+      display:grid;
+      grid-template-columns: 1.25fr .85fr;
+      gap:18px;
+      align-items:start;
+    }
+
+    .panel{
+      border:1px solid rgba(255,255,255,.08);
+      background: rgba(15,26,29,.55);
+      border-radius: var(--radius);
+      padding:18px;
+      box-shadow: var(--shadow2);
+      position:relative;
+      overflow:hidden;
+    }
+    .panel:before{
+      content:"";
+      position:absolute; inset:-2px;
+      background: radial-gradient(420px 180px at 10% 0%, rgba(13,255,161,.12), transparent 55%);
+      opacity:.7;
+      pointer-events:none;
+    }
+
+    .title{
+      position:relative;
+      margin:0 0 10px;
+      font-size:30px;
+      line-height:1.05;
+      letter-spacing:.2px;
+    }
+    .title span{
+      color:var(--green);
+      text-shadow: 0 0 22px rgba(13,255,161,.22);
+    }
+
+    .lead{
+      position:relative;
+      margin:0 0 12px;
+      color:var(--muted);
+      line-height:1.55;
+      font-size:14.2px;
+    }
+
+    .meta{
+      position:relative;
+      display:flex;
+      flex-wrap:wrap;
+      gap:10px;
+      margin-top:14px;
+    }
+
+    .tag{
+      display:inline-flex;
+      align-items:center;
+      gap:10px;
+      padding:10px 12px;
+      border-radius:16px;
+      background: rgba(12,22,25,.55);
+      border:1px solid rgba(255,255,255,.08);
+      min-width: 210px;
+    }
+    .tag .dot{
+      width:10px;height:10px;border-radius:999px;
+      background: var(--green);
+      box-shadow: 0 0 18px rgba(13,255,161,.35);
+      flex:0 0 auto;
+    }
+    .tag b{font-size:12.8px}
+    .tag span{
+      font-size:12.4px;
+      color:var(--muted);
+    }
+
+    .divider{
+      height:1px;
+      background: linear-gradient(90deg, transparent, rgba(13,255,161,.35), transparent);
+      margin:14px 0 16px;
+      opacity:.55;
+    }
+
+    /* Right column projects */
+    .sideTitle{
+      position:relative;
+      display:flex;
+      align-items:center;
+      justify-content:space-between;
+      gap:10px;
+      margin:0 0 12px;
+    }
+    .sideTitle h2{
+      margin:0;
+      font-size:14px;
+      letter-spacing:.3px;
+      text-transform:uppercase;
+      color:rgba(234,242,243,.86);
+    }
+    .sideTitle .chip{
+      font-family: var(--mono);
+      font-size: 11px;
+      padding:6px 10px;
+      border-radius:999px;
+      border:1px solid rgba(13,255,161,.26);
+      color: rgba(13,255,161,.95);
+      background: rgba(12,22,25,.55);
+    }
+
+    .projects{
+      display:grid;
+      gap:10px;
+    }
+
+    .proj{
+      display:flex;
+      gap:12px;
+      padding:12px 12px;
+      border-radius: var(--radius2);
+      border:1px solid rgba(13,255,161,.18);
+      background:
+        radial-gradient(240px 120px at 18% 0%, rgba(13,255,161,.10), transparent 55%),
+        rgba(12,22,25,.55);
+      text-decoration:none;
+      color:var(--text);
+      transition: transform .15s ease, border-color .15s ease, background .15s ease;
+      box-shadow: var(--shadow2);
+    }
+    .proj:hover{
+      transform: translateY(-1px);
+      border-color: rgba(13,255,161,.35);
+      background:
+        radial-gradient(240px 120px at 18% 0%, rgba(13,255,161,.14), transparent 55%),
+        rgba(12,22,25,.68);
+    }
+
+    .proj .pico{
+      width:42px;height:42px;
+      border-radius:14px;
+      display:grid; place-items:center;
+      border:1px solid rgba(255,255,255,.08);
+      background:
+        radial-gradient(16px 16px at 30% 25%, rgba(255,255,255,.14), transparent 60%),
+        linear-gradient(180deg, rgba(13,255,161,.22), rgba(0,0,0,0));
+      font-family: var(--mono);
+      font-size: 13px;
+      color: rgba(234,242,243,.95);
+      flex:0 0 auto;
+    }
+    .proj .ptext b{
+      display:block;
+      font-size:13.2px;
+      margin-bottom:4px;
+      letter-spacing:.2px;
+    }
+    .proj .ptext span{
+      display:block;
+      font-size:12.3px;
+      color: var(--muted);
+      line-height:1.35;
+    }
+
+    .foot{
+      padding:14px 18px 18px;
+      border-top:1px solid rgba(255,255,255,.08);
+      color: rgba(234,242,243,.55);
+      font-size:12px;
+      display:flex;
+      justify-content:space-between;
+      gap:12px;
+      flex-wrap:wrap;
+    }
+    .foot .mini{
+      font-family: var(--mono);
+      letter-spacing:.2px;
+    }
+
+    /* Responsive */
+    @media (max-width: 980px){
+      .layout{grid-template-columns: 1fr}
+      .brand{min-width:auto}
+      .title{font-size:28px}
+      .tag{min-width: 0; width:100%}
+      .contactRow{justify-content:flex-start}
+    }
+    @media (max-width: 520px){
+      .topbar{padding:14px}
+      .content{padding:16px 14px 18px}
+      .title{font-size:24px}
+      .pill{width:100%}
+    }
+
+    /* Reduce motion */
+    @media (prefers-reduced-motion: reduce){
+      .logo:after{animation:none}
+      .glow{animation:none}
+      .pill,.proj{transition:none}
+    }
+  </style>
 </head>
 
 <body>
-<div class="app">
+  <div class="glow"></div>
+  <div class="gridfx"></div>
 
-  <!-- LATERAL / PROJETOS -->
-  <aside class="sidebar">
-    <div class="brand">
-      <div class="chip">BTX</div>
-      <div>
-        <h2>BTX Tech</h2>
-        <span>Belém • Tecnologia & Saúde</span>
-      </div>
-    </div>
-
-    <div class="nav">
-      <div class="btn">
-        <strong>Agenda Clínica Inteligente</strong>
-        <small>Offline-first • alta confiabilidade</small>
-      </div>
-      <div class="btn">
-        <strong>Gerador de Documentos</strong>
-        <small>Receitas • laudos • atestados</small>
-      </div>
-      <div class="btn">
-        <strong>Padronização Profissional</strong>
-        <small>Layouts premium e consistentes</small>
-      </div>
-      <div class="btn">
-        <strong>Soluções Sob Medida</strong>
-        <small>Realidade local • impacto prático</small>
-      </div>
-    </div>
-
-    <div class="footer-side">
-      One-page institucional<br>
-      HTML único • sem imagens
-    </div>
-  </aside>
-
-  <!-- CONTEÚDO PRINCIPAL -->
-  <main class="content">
-
+  <main class="wrap">
     <section class="hero">
-      <div>
-        <div class="badge">INOVAÇÃO REGIONAL</div>
-        <h1>Tecnologia aplicada à saúde<br>para acelerar o desenvolvimento local</h1>
-        <p class="subtitle">
-          O desenvolvimento tecnológico na nossa região ainda é limitado, especialmente
-          quando comparado a grandes centros. A BTX nasce para reduzir essa distância,
-          estimulando soluções reais, acessíveis e profissionais — com foco em saúde,
-          gestão clínica e impacto prático.
-        </p>
+
+      <!-- TOP: brand + contacts (big and visible) -->
+      <header class="topbar">
+        <div class="brand" aria-label="BTX Tech">
+          <div class="logo" aria-hidden="true"></div>
+          <div>
+            <h1>BTX Tech — Belém</h1>
+            <span class="sub">Fundada em Abaetetuba–PA • expandida para Belém–PA</span>
+          </div>
+        </div>
+
+        <nav class="contactRow" aria-label="Contatos principais">
+          <a class="pill" href="https://wa.me/5591999873835" target="_blank" rel="noopener">
+            <span class="ico">WA</span>
+            <span>
+              <small>WhatsApp / Telefone</small>
+              <strong>(91) 99987-3835</strong>
+            </span>
+          </a>
+
+          <!-- Se quiser, descomenta e ajusta o segundo número:
+          <a class="pill" href="https://wa.me/5591992980333" target="_blank" rel="noopener">
+            <span class="ico">WA</span>
+            <span>
+              <small>WhatsApp / Telefone</small>
+              <strong>(91) 99298-0333</strong>
+            </span>
+          </a>
+          -->
+
+          <a class="pill" href="mailto:gerenciamentodecontasorlando@gmail.com">
+            <span class="ico">@</span>
+            <span>
+              <small>E-mail</small>
+              <strong>gerenciamentodecontasorlando@gmail.com</strong>
+            </span>
+          </a>
+
+          <a class="pill" href="mailto:btxtecbaixotocantins@gmail.com">
+            <span class="ico">@</span>
+            <span>
+              <small>E-mail</small>
+              <strong>btxtecbaixotocantins@gmail.com</strong>
+            </span>
+          </a>
+
+          <a class="pill" href="https://instagram.com/orlandoabreu" target="_blank" rel="noopener">
+            <span class="ico">IG</span>
+            <span>
+              <small>Instagram</small>
+              <strong>@Orlandoabreu</strong>
+            </span>
+          </a>
+        </nav>
+      </header>
+
+      <div class="content">
+        <div class="layout">
+          <!-- LEFT: story + founder -->
+          <article class="panel">
+            <h2 class="title">Tecnologia aplicada à <span>saúde</span>, com base na Amazônia e visão global.</h2>
+
+            <p class="lead">
+              Em regiões onde a inovação ainda é baixa, a diferença entre “ter um processo” e “ter um sistema”
+              muda o jogo. A <b>BTX Tech</b> nasce para elevar o padrão tecnológico local, conectando prática clínica,
+              engenharia e software — com foco em soluções <b>simples, funcionais e vendáveis</b>.
+            </p>
+
+            <div class="divider"></div>
+
+            <p class="lead">
+              <b>Orlando Abreu</b> atua com mentalidade de obra: construir, testar, simplificar e entregar.
+              Une a vivência clínica (odontologia) com tecnologia (análise de sistemas/engenharia), e segue em formação
+              médica, consolidando um ecossistema de ferramentas para consultórios e clínicas que precisam de
+              <b>organização</b>, <b>padronização</b> e <b>agilidade</b>.
+            </p>
+
+            <div class="meta" aria-label="Credenciais e liderança">
+              <div class="tag">
+                <span class="dot" aria-hidden="true"></span>
+                <div>
+                  <b>Fundador</b><br/>
+                  <span>Orlando Abreu</span>
+                </div>
+              </div>
+
+              <div class="tag">
+                <span class="dot" aria-hidden="true"></span>
+                <div>
+                  <b>Presidente</b><br/>
+                  <span>Joszael Tarcio</span>
+                </div>
+              </div>
+
+              <div class="tag">
+                <span class="dot" aria-hidden="true"></span>
+                <div>
+                  <b>Perfil</b><br/>
+                  <span>Cirurgião-dentista • Estudante de Medicina (7º semestre) • Tecnologia</span>
+                </div>
+              </div>
+
+              <div class="tag">
+                <span class="dot" aria-hidden="true"></span>
+                <div>
+                  <b>Foco</b><br/>
+                  <span>Organização clínica • Automação • Impressos/PDF premium • Offline-first</span>
+                </div>
+              </div>
+            </div>
+          </article>
+
+          <!-- RIGHT: projects -->
+          <aside class="panel" aria-label="Projetos BTX">
+            <div class="sideTitle">
+              <h2>Projetos e soluções</h2>
+              <span class="chip">BTX / Tech</span>
+            </div>
+
+            <div class="projects">
+              <a class="proj" href="#" onclick="return false;">
+                <div class="pico">A1</div>
+                <div class="ptext">
+                  <b>Agenda clínica offline-first</b>
+                  <span>Memória confiável, organização diária/semanal e fluxo de atendimento.</span>
+                </div>
+              </a>
+
+              <a class="proj" href="#" onclick="return false;">
+                <div class="pico">D2</div>
+                <div class="ptext">
+                  <b>Gerador de documentos clínicos</b>
+                  <span>Receituário, atestado, laudo e orçamento com padrão profissional e PDF individual.</span>
+                </div>
+              </a>
+
+              <a class="proj" href="#" onclick="return false;">
+                <div class="pico">P3</div>
+                <div class="ptext">
+                  <b>Padronização de impressos premium</b>
+                  <span>Layouts alinhados, bordas, hierarquia visual e assinatura no lugar certo.</span>
+                </div>
+              </a>
+
+              <a class="proj" href="#" onclick="return false;">
+                <div class="pico">T4</div>
+                <div class="ptext">
+                  <b>Ferramentas digitais para clínicas</b>
+                  <span>Soluções práticas para reduzir retrabalho e elevar produtividade.</span>
+                </div>
+              </a>
+
+              <a class="proj" href="#" onclick="return false;">
+                <div class="pico">V5</div>
+                <div class="ptext">
+                  <b>Projetos em expansão</b>
+                  <span>Do software ao hardware — construção de produtos para a realidade regional.</span>
+                </div>
+              </a>
+            </div>
+
+            <div class="divider"></div>
+
+            <p class="lead" style="margin:0; position:relative;">
+              Se você precisa de um sistema simples, elegante e funcional para sua clínica,
+              a BTX entrega o essencial — com acabamento de alto nível.
+            </p>
+          </aside>
+        </div>
       </div>
 
-      <div class="card">
-        <p>
-          A BTX surge com o objetivo de **estimular crescimento**, **organizar processos**
-          e **elevar o padrão tecnológico**, conectando conhecimento técnico,
-          vivência clínica e engenharia de software.
-        </p>
-      </div>
+      <footer class="foot">
+        <div>BTX Tech • Abaetetuba–PA → Belém–PA</div>
+        <div class="mini">Contato: (91) 99987-3835 • @Orlandoabreu</div>
+      </footer>
     </section>
-
-    <section class="section">
-      <h3>Quem está por trás</h3>
-      <div class="about">
-        <div>
-          <p>
-            <strong>Orlando Abreu Gomes da Silva</strong> é cirurgião-dentista,
-            especialista em cirurgia e traumatologia bucomaxilofacial, analista de sistemas
-            e estudante de Medicina (7º semestre).
-          </p>
-          <p class="subtitle">
-            A combinação entre clínica, tecnologia e engenharia orienta o desenvolvimento
-            de soluções robustas, simples de usar e alinhadas à realidade do dia a dia
-            dos profissionais de saúde.
-          </p>
-        </div>
-        <ul class="list">
-          <li>Cirurgião-dentista</li>
-          <li>Especialista em cirurgia e traumatologia bucomaxilofacial</li>
-          <li>Estudante de Medicina — 7º semestre</li>
-          <li>Analista de Sistemas</li>
-          <li>Foco em soluções clínicas e digitais integradas</li>
-        </ul>
-      </div>
-    </section>
-
-    <section class="section">
-      <h3>Áreas de atuação</h3>
-      <div class="grid">
-        <div class="tile">
-          <h4>Gestão Clínica</h4>
-          <p>Agendas, fluxos de atendimento e organização diária confiável.</p>
-        </div>
-        <div class="tile">
-          <h4>Documentação Profissional</h4>
-          <p>Geração rápida de documentos com padrão visual e dados automáticos.</p>
-        </div>
-        <div class="tile">
-          <h4>Offline & Estabilidade</h4>
-          <p>Sistemas pensados para funcionar mesmo sem internet.</p>
-        </div>
-        <div class="tile">
-          <h4>Inovação Local</h4>
-          <p>Soluções tecnológicas alinhadas à realidade regional.</p>
-        </div>
-      </div>
-    </section>
-
-    <div class="contact">
-      <div><strong>Telefone:</strong> (91) 99987-3835</div>
-      <div><strong>E-mail:</strong> btxtecbaixotocantins@gmail.com</div>
-    </div>
-
-    <div class="note">
-      Documento institucional • apresentação comercial • HTML único
-    </div>
-
   </main>
-</div>
 </body>
 </html>
